@@ -17,7 +17,6 @@
 
 // STEP 1: Get the "Shout" button by its ID ("btnShout")
 //         using document.getElementById()
-const shoutButton = document.getElementById("btnShout");
 
 // STEP 2: Add a click event listener to the button.
 //         Inside the listener function:
@@ -29,11 +28,16 @@ const shoutButton = document.getElementById("btnShout");
 //            using .innerHTML
 //
 //         Example: "hello" → "HELLO!"
-button.addEventListener("click", function() {
-    const userInput = document.getElementById("shoutInput").value;
-    const shoutedText = userInput.toUpperCase() + "!";
-    document.getElementById("outShout").innerHTML = shoutedText;
+document.getElementById("btnShout").addEventListener("click", function() {
+   
+    let inputText = document.getElementById("shoutInput").value;
+    
+    let shoutResult = inputText.toUpperCase() + "!";
+    
+    document.getElementById("outShout").innerHTML = shoutResult;
 });
+
+
 
 
 // ============================================
@@ -55,6 +59,7 @@ button.addEventListener("click", function() {
 //      size radio buttons. Loop through them to find the
 //      one that is .checked, and read its .value.
 //      Convert to a number with parseFloat().
+document.getElementById("btnCalc").addEventListener("click", function() {
 let sizePrice = 0;
     const sizeRadios = document.getElementsByName("rg");
     for (let i = 0; i < sizeRadios.length; i++) {
@@ -62,7 +67,7 @@ let sizePrice = 0;
             sizePrice = parseFloat(sizeRadios[i].value);
             break;
         }
-    }
+    });
 
 //   b) Count checked toppings:
 //      Use document.getElementsByName("cb") to get all
@@ -125,7 +130,9 @@ document.getElementById("myPara").textContent = customerName + ", your total is 
 document.getElementById("clearBtn").addEventListener("click", function() {
 
     document.getElementById("myInput").value = "";
+
     document.getElementById("r3").checked = true;
+
     const toppings = document.getElementsByName("cb");
     for (let i = 0; i < toppings.length; i++) {
         toppings[i].checked = false;
@@ -133,5 +140,5 @@ document.getElementById("clearBtn").addEventListener("click", function() {
 
     document.getElementById("serviceSelect").value = "dinein";
 
-    document.getElementById("myPara").textContent = "";
+    document.getElementById("myPara").innerHTML = "";
 });
